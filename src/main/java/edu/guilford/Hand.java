@@ -6,7 +6,9 @@ public class Hand {
     private ArrayList<Card> hand;
 
     
-
+    /**
+     * Assigns an empty list to a Hand object.
+     */
     public Hand() {
         hand = new ArrayList<Card>();
     }
@@ -31,7 +33,12 @@ public class Hand {
         return hand.get(index);
     }
 
-    // Calculate the value of the hand
+    /**
+     * Calculates a total for the hand according to the rules of Blackjack. Number cards add their face value.
+     * Face cards add 10. Aces count as either 1 or 11, whichever provides the higher score without exceeding 21.
+     * 
+     * @return the total value of the hand, according to the rules of Blackjack.
+     */
     public int getTotalValue() {
         int value = 0;
         int aces = 0;
