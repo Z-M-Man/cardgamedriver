@@ -84,7 +84,9 @@ public class LamarckianPoker {
      * @return true if the size of both players' hands is less than 7 and false otherwise.
      */
     public boolean turn() {
-        if (player1Hand.size() < 7 || player2Hand.size() < 7) {
+        // if (player1Hand.size() < 7 || player2Hand.size() < 7) {
+        // The or operator in this condition has been changed to an and operator.
+        if (player1Hand.size() < 7 && player2Hand.size() < 7) {
             makePool();
             // System.out.println("Turn " + iTurn + "\n" + pool);
             Card player1Card = player1Hand.getCard(rand.nextInt(player1Hand.size()));
