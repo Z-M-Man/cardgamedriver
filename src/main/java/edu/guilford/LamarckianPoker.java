@@ -92,7 +92,7 @@ public class LamarckianPoker {
      */
     public boolean turn() {
         // if (player1Hand.size() < 7 || player2Hand.size() < 7) {
-        // The or operator in this condition should be changed to an and operator.
+        // The or operator in this condition was changed to an and operator.
         if (player1Hand.size() < 7 && player2Hand.size() < 7) {
             makePool();
             // System.out.println("Turn " + iTurn + "\n" + pool);
