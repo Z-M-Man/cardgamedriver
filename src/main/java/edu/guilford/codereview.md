@@ -1,3 +1,5 @@
+# Reviewing Implementation
+
 ## Documentation
 
 - Although the initial project did not have proper Javadoc comments for all classes and methods, it is now 
@@ -119,4 +121,58 @@ satisfactory in its current state.
 
 ## Variables
 - All variables have reasonable types and identifiers.
-- Each variable has a single purpose in its scope
+- Each variable has a single purpose in its scope.
+- Type consistency is ensured for each variable.
+- The variable `iTurn` and its references in `LamarckianPoker` can be removed because it serves no function in the code.
+
+## Arithmetic Operations
+- No potential concerns about operations apply to this project.
+
+## Loops and Conditional Statements
+- There are no errors in nesting or conditional statements other than the concerns already listed above.
+- There are no concerns in the order of tested conditions in `if`-`else` chains or `switch` statements. For the Blackjack part of the driver program, natural Blackjacks are tested for first. This may not be the most common scenario, but it makes sense given the rules of the game. The `switch` statement in `Hand` is ordered numerically, but that can potentially improve readability. If testing the most common case first is a must, the cases for the face cards should be moved to the top of the statement.
+- All possible cases are accounted for in these loops, with the exception of a bug in the driver program that will be individually explored below.
+- All loops have proper initialization statements and termination conditions.
+- There are no statements that should be moved outside of a loop or conditional statement.
+
+## General Practices
+- All return values are assigned and returned correctly.
+- All statements operate on the correct data.
+- The code returns reasonable results for a wide range of cases.
+- The driver program prints the results of the Blackjack games without context. It may be helpful to add a print statement to the start to indicate what the results mean.
+
+# Bug Tracking and Fixing
+
+## The Error
+
+- Occasionally, the output of the driver program will include an error:
+    ```
+    Exception in thread "main" java.lang.IllegalArgumentException: bound must be positive
+        at java.base/java.util.Random.nextInt(Random.java:322)
+        at edu.guilford.LamarckianPoker.turn(LamarckianPoker.java:101)
+        at edu.guilford.CardGameDriver.main(CardGameDriver.java:60)
+    ```
+- This error points to lines 99 and 100 of `LamarckianPoker`, which are
+    ```
+    Card player1Card = player1Hand.getCard(rand.nextInt(player1Hand.size()));
+    Card player2Card = player2Hand.getCard(rand.nextInt(player2Hand.size()));
+    ```
+- It occurs if `size()` returns 0, as `nextInt()` of the `Random` class cannot return a random integer between 0 and 0. This means that at least one player's hand has zero cards when these statements run. 
+- For a player to get 0 cards in their hand, their chosen sacrifical card has to consistently not gain them any cards from the pool. As the sacrificial card is discarded, their hand effectively shrinks by one card. As the scenario in which a player repeatedly fails to gain cards from the pool until they lose all cards is unlikely, this error only happens occasionally. 
+
+## The Fix
+- A potential solution for this error is to modify the `turn()` method so that it checks if at least one of the players has zero cards in their deck before choosing a sacrificial card for them. If that is the case, it will end the game. 
+    ```
+    public boolean turn() {
+        if (player1Hand.size() < 7 && player2Hand.size() < 7) {
+            makePool();
+        
+            // Check if a player hand is empty before selecting a sacrifical card
+            if (player1Hand.size() == 0 || player2Hand.size() == 0) {
+                return false; // End the game if either hand is empty
+            }
+        ...
+        }
+    }
+    ```
+- The project specifications for `LamarckianPoker` should be updated to mention that if either player `Hand` has no `Card` objects to choose as the sacrificial card, the game will end early.

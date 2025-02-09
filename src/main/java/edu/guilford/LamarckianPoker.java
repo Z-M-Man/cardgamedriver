@@ -96,6 +96,13 @@ public class LamarckianPoker {
         if (player1Hand.size() < 7 && player2Hand.size() < 7) {
             makePool();
             // System.out.println("Turn " + iTurn + "\n" + pool);
+
+            // Bug-fixing statement
+            // Check if a player hand is empty before selecting a sacrifical card
+            if (player1Hand.size() == 0 || player2Hand.size() == 0) {
+                return false; // End the game if either hand is empty
+            }
+
             Card player1Card = player1Hand.getCard(rand.nextInt(player1Hand.size()));
             Card player2Card = player2Hand.getCard(rand.nextInt(player2Hand.size()));
             Hand firstHand, secondHand;
