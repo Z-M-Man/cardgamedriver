@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * Implements the start of a modified Lamarckian poker game and the playing of a turn. Each player gets 4 cards, plus
- * a pool of 4 cards. The players choose a sacrificial card, and the higher card goes first. All cards of the same
- * suit or rank are taken from the pool and the sacrifical card is added to the discard. Unchosen cards are 
- * discarded and a new pool is drawn. Once all players have at least 7 cards, the game ends.
+ * Implements the start of a modified Lamarckian poker game and the playing of a
+ * turn. Each player gets 4 cards, plus a pool of 4 cards. The players choose a 
+ * sacrificial card, and the higher card goes first. All cards of the same
+ * suit or rank are taken from the pool and the sacrifical card is added to the
+ * discard. Unchosen cards are discarded and a new pool is drawn. Once all players 
+ * have at least 7 cards, the game ends.
  */
 public class LamarckianPoker {
     private Hand player1Hand;
@@ -53,7 +55,8 @@ public class LamarckianPoker {
     }
 
     /**
-     * Instantiates new Hand objects for each player and deals 4 Card objects from the deck to each player.
+     * Instantiates new Hand objects for each player and deals 4 Card objects from
+     * the deck to each player.
      */
     public void deal() {
         player1Hand = new Hand();
@@ -65,7 +68,8 @@ public class LamarckianPoker {
     }
 
     /**
-     * Creates a Hand object to represent the pool and deal 4 Card objects from the deck to that object.
+     * Creates a Hand object to represent the pool and deal 4 Card objects from the
+     * deck to that object.
      */
     public void makePool() {
         pool = new Hand();
@@ -76,16 +80,19 @@ public class LamarckianPoker {
     }
 
     /**
-     * Chooses a random card from each player's hand to be the "sacrificial" card. The higher card goes first,
-     * adding all cards of the same suit or rank to that player's hand, removing it from the pool, and adding the
-     * sacrificial card and unchosen cards to the discard pile. If less than four Card objects are available to 
-     * create a pool, the cards from the discard are readded to the deck.
+     * Chooses a random card from each player's hand to be the "sacrificial" card.
+     * The higher card goes first, adding all cards of the same suit or rank to 
+     * that player's hand, removing it from the pool, and adding the sacrificial 
+     * card and unchosen cards to the discard pile. If less than four Card objects 
+     * are available to create a pool, the cards from the discard are readded to 
+     * the deck.
      * 
-     * @return true if the size of both players' hands is less than 7 and false otherwise.
+     * @return true if the size of both players' hands is less than 7 and false
+     *         otherwise.
      */
     public boolean turn() {
         // if (player1Hand.size() < 7 || player2Hand.size() < 7) {
-        // The or operator in this condition has been changed to an and operator.
+        // The or operator in this condition should be changed to an and operator.
         if (player1Hand.size() < 7 && player2Hand.size() < 7) {
             makePool();
             // System.out.println("Turn " + iTurn + "\n" + pool);
@@ -159,7 +166,7 @@ public class LamarckianPoker {
                 // System.out.println("Discard\n" + discard.size());
             }
             iTurn++;
-            
+
             return true;
         } else {
             return false;

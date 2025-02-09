@@ -1,10 +1,14 @@
 package edu.guilford;
 
 /**
- * Implements a simple version of player and dealer actions in the Blackjack game. At the start of the game, the
- * player and dealer are each dealt two cards. A player turn is when the player draws cards until the hand total
- * is greater than or equal to 16. The player busts if the total is over 21. A dealer turn is when the dealer draws
- * cards until the hand total is greater than or equal to 17. The dealer busts if the total is over 21. 
+ * Implements a simple version of player and dealer actions in the Blackjack
+ * game. At the start of the game, the
+ * player and dealer are each dealt two cards. A player turn is when the player
+ * draws cards until the hand total
+ * is greater than or equal to 16. The player busts if the total is over 21. A
+ * dealer turn is when the dealer draws
+ * cards until the hand total is greater than or equal to 17. The dealer busts
+ * if the total is over 21.
  */
 public class Blackjack {
     private Hand playerHand;
@@ -18,17 +22,13 @@ public class Blackjack {
         reset(true);
     }
 
-    
-
     public Hand getPlayerHand() {
         return playerHand;
     }
 
-
     public Hand getDealerHand() {
         return dealerHand;
     }
-
 
     public Deck getDeck() {
         return deck;
@@ -47,7 +47,8 @@ public class Blackjack {
     }
 
     /**
-     * Instantiates two Hand objects, assigning them the proper player and dealer attributes. It then adds two Card
+     * Instantiates two Hand objects, assigning them the proper player and dealer
+     * attributes. It then adds two Card
      * objects from the Deck object to each Hand object.
      */
     public void deal() {
@@ -60,10 +61,12 @@ public class Blackjack {
     }
 
     /**
-     * Applies the following rules: a player draws cards until the hand total is greater than or equal to 16. The 
-     * player busts if the total is over 21. 
+     * Applies the following rules: a player draws cards until the hand total is
+     * greater than or equal to 16. The
+     * player busts if the total is over 21.
      * 
-     * @return true if the value of the player's hand is less than or equal to 21 and false otherwise.
+     * @return true if the value of the player's hand is less than or equal to 21
+     *         and false otherwise.
      */
     public boolean playerTurn() {
         while (playerHand.getTotalValue() < 16) {
@@ -74,10 +77,12 @@ public class Blackjack {
     }
 
     /**
-     * Applies the following rules: the dealer draws cards until the hand total is greater than or equal to 17. The 
-     * dealer busts if the total is over 21. 
+     * Applies the following rules: the dealer draws cards until the hand total is
+     * greater than or equal to 17. The
+     * dealer busts if the total is over 21.
      * 
-     * @return true if the value of the dealer's hand is less than or equal to 21 and false otherwise.
+     * @return true if the value of the dealer's hand is less than or equal to 21
+     *         and false otherwise.
      */
     public boolean dealerTurn() {
         while (dealerHand.getTotalValue() < 17) {

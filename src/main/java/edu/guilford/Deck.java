@@ -20,13 +20,14 @@ public class Deck {
     public ArrayList<Card> getDeck() {
         return deck;
     }
-    
+
     public void clear() {
         deck.clear();
     }
 
     /**
-     * Adds all 52 Card objects in a standard deck to an arrayList in the order of suit, sorted by rank. 
+     * Adds all 52 Card objects in a standard deck to an arrayList in the order of
+     * suit, sorted by rank.
      */
     public void build() {
         for (Card.Suit suit : Card.Suit.values()) {
@@ -37,7 +38,8 @@ public class Deck {
     }
 
     /**
-     * Shuffles the deck into a random arrangement. This will work on any deck with more than 0 Card objects.
+     * Shuffles the deck into a random arrangement. This will work on any deck with
+     * more than 0 Card objects.
      */
     public void shuffle() {
         ArrayList<Card> tempDeck = new ArrayList<Card>();
@@ -61,7 +63,8 @@ public class Deck {
     }
 
     /**
-     * Returns the Card object at the top of the deck (at index 0) and removes it from the deck.
+     * Returns the Card object at the top of the deck (at index 0) and removes it
+     * from the deck.
      * 
      * @return the Card at the top of the deck, at index 0.
      */

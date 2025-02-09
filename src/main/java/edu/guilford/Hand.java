@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Hand {
     private ArrayList<Card> hand;
 
-    
     /**
      * Assigns an empty list to a Hand object.
      */
@@ -34,8 +33,10 @@ public class Hand {
     }
 
     /**
-     * Calculates a total for the hand according to the rules of Blackjack. Number cards add their face value.
-     * Face cards add 10. Aces count as either 1 or 11, whichever provides the higher score without exceeding 21.
+     * Calculates a total for the hand according to the rules of Blackjack. Number
+     * cards add their face value.
+     * Face cards add 10. Aces count as either 1 or 11, whichever provides the
+     * higher score without exceeding 21.
      * 
      * @return the total value of the hand, according to the rules of Blackjack.
      */

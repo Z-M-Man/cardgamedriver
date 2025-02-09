@@ -5,7 +5,7 @@ import java.util.Random;
 /**
  * Represents a standard playing card with its suit and rank.
  */
-public class Card implements Comparable<Card>{
+public class Card implements Comparable<Card> {
     // enum for the suits
     public enum Suit {
         CLUBS, DIAMONDS, HEARTS, SPADES
@@ -24,8 +24,10 @@ public class Card implements Comparable<Card>{
     /**
      * Produces a Card object of a specified suit and rank.
      * 
-     * @param suit the Suit constant that will be assigned as the Card object's suit.
-     * @param rank the Rank constant that will be assigned as the Card object's rank.
+     * @param suit the Suit constant that will be assigned as the Card object's
+     *             suit.
+     * @param rank the Rank constant that will be assigned as the Card object's
+     *             rank.
      */
     public Card(Suit suit, Rank rank) {
         this.suit = suit;
@@ -60,27 +62,27 @@ public class Card implements Comparable<Card>{
     }
 
     /**
-     * Compares this Card object to another Card object. Rank is compared first, then suit. 
+     * Compares this Card object to another Card object. Rank is compared first,
+     * then suit.
      * 
      * @param otherCard the Card being compared to this Card
-     * @return 1 if this Card's rank is higher, -1 if the other Card's rank is higher. If the ranks are the same,
-     * returns 1 if this Card's suit is higher, -1 if the other Card's suit is higher. Returns 0 if both Cards are
-     * the same.
+     * @return 1 if this Card's rank is higher, -1 if the other Card's rank is
+     *         higher. If the ranks are the same,
+     *         returns 1 if this Card's suit is higher, -1 if the other Card's suit
+     *         is higher. Returns 0 if both Cards are
+     *         the same.
      */
     @Override
     public int compareTo(Card otherCard) {
-        // TODO Auto-generated method stub
+        // The todo comment here was not necessary and has been removed.
         if (this.rank.ordinal() > otherCard.rank.ordinal()) {
             return 1;
-        }
-        else if (this.rank.ordinal() < otherCard.rank.ordinal()) {
+        } else if (this.rank.ordinal() < otherCard.rank.ordinal()) {
             return -1;
-        }
-        else {
+        } else {
             if (this.suit.ordinal() > otherCard.suit.ordinal()) {
                 return 1;
-            }
-            else if (this.suit.ordinal() < otherCard.suit.ordinal()) {
+            } else if (this.suit.ordinal() < otherCard.suit.ordinal()) {
                 return -1;
             }
         }
@@ -88,5 +90,4 @@ public class Card implements Comparable<Card>{
         return 0;
     }
 
-    
 }
